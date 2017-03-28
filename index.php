@@ -1,7 +1,12 @@
 <?php
   
-  include 'includes/config.php';
-  
+    include 'includes/config.php';
+
+    // Préparation de la requête
+    $query = $pdo->query('SELECT * FROM rover_photo WHERE sol=100');
+
+    // Éxécution de la requête et récupération des données
+    $photos_display = $query->fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -63,11 +68,37 @@
         </div>
       </div>
     </div>
-    
+    <?php foreach($photos_display as $_photo): ?>
+        <div class="img-container">
+            <img src="<?= $_photo->url ?>" alt="mars">    
+        </div>     
+    <?php endforeach; ?>
   </div>
   
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <script src="assets/js/script.min.js"></script>
 
 </body>
+</html>
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+        <title>Inventory Cheese</title>
+        <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+        <link rel="stylesheet" href="main.css">
+    </head>
+    <body>
+        <?php foreach($photos_display as $_photo): ?>
+            <div class="img-container">
+                <img src="<?= $_photo->url ?>" alt="mars">    
+            </div>     
+        <?php endforeach; ?>
+    </body>    
 </html>
