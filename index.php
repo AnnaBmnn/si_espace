@@ -2,6 +2,7 @@
     session_start();
     include 'includes/config.php';
 
+
     // Préparation de la requête
     $query = $pdo->query('SELECT * FROM rover_photo WHERE sol=20');
 
@@ -79,7 +80,7 @@
             <div class="corner corner_bottom_left"> </div>
             <div class="corner corner_bottom_right"> </div>
             <span>CLICK FOR MORE INFORMATIONS</span>
-            <!--<img src=< $_photo->url ?> />-->
+            <img src=<?= $_photo->url ?> />
               
           </div>     
       <?php endforeach; ?>
