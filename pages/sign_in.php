@@ -1,4 +1,5 @@
 <?php
+    session_start();
     include '../includes/config.php';
     include '../includes/login_user.php';
 ?>
@@ -25,14 +26,14 @@
            <a class="log1" href="#">SIGN IN</a>
            <a class="log2" href="sign_up.php">SIGN UP</a>
             </div>
-            <form action="#" method="post">
+            <form action="../index.php" method="post">
                 <div>
                     <label for="name_login">Username</label>
                     <input type="text" name="name_login" value="" placeholder="JohnSmith" id="name_login">
                 </div>
                 <div>
-                    <label for="postscriptum">Password</label>
-                    <input type="password" name="pswd" value="" id="pswd" placeholder="*****">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" value="" id="password" placeholder="*****">
                 </div>
                 <input type="submit">
             </form>

@@ -1,6 +1,8 @@
 <?php
+    session_start();
     include '../includes/config.php';
     include '../includes/create_user.php';
+    
 
 ?>
 
@@ -26,10 +28,10 @@
                 <a class="log1" href="sign_in.php">SIGN IN</a>
                 <a class="log2" href="#">SIGN UP</a>
             </div>
-            <form action="#" method="post">
+            <form action="../index.php" method="post">
                 <div>
                     <label for="name_subscribe">Choose a username</label>
-                    <input type="text" name="name_subscribe" value="" placeholder="JohnSmith" id="user">
+                    <input type="text" name="name_subscribe" value="" placeholder="JohnSmith" id="name_subscribe">
                 </div>
                 <div>
                     <label for="email">Enter your email</label>

@@ -35,7 +35,7 @@
                 id_rover INT(255) NOT NULL,
                 camera VARCHAR(255) NOT NULL)";  
                 $pdo->query($sql);                        //create a new table for each users in database
-            
+            $_SESSION['user'] = $name_subscribe;
         } else {
             echo 'le nom existe déjà';
         }

@@ -1,5 +1,5 @@
 <?php
-  
+    session_start();
     include 'includes/config.php';
 
     // Préparation de la requête
@@ -7,6 +7,11 @@
 
     // Éxécution de la requête et récupération des données
     $photos_display = $query->fetchAll();
+
+    echo '<pre>';
+    print_r($_SESSION);
+    echo '</pre>';
+    
 ?>
 
 <!DOCTYPE html>

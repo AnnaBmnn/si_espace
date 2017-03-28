@@ -13,7 +13,6 @@ if(isset($_POST['name_login'])){
 
     // Test password
     if($user->password == $password)
-        echo 'You shall pass !';
-    else
-        echo 'You shall not pass !';
+        $_SESSION['user'] = $name_login;
+    
 }
