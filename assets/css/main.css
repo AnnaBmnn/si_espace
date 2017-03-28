@@ -36,12 +36,24 @@
 .rover_informations div:nth-child(4) {
   animation-delay: 1s;
 }
-.hide_left:hover .mission_informations,
-.hide_left:hover .rover_informations {
-  animation-name: left_hide;
-  animation-delay: 0.2s;
+.galery {
+  opacity: 0;
+  animation-name: up_show;
+  animation-delay: 0.4s;
   animation-duration: 0.5s;
   animation-fill-mode: forwards;
+}
+.img-container {
+  opacity: 0;
+  animation-name: up_show;
+  animation-delay: 0.75s;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+.img_container:hover .img_actions,
+.img_container:hover .corner,
+.img_container:hover span {
+  display: block;
 }
 @-moz-keyframes left_show {
   0% {
@@ -163,8 +175,48 @@
     opacity: 0;
   }
 }
+@-moz-keyframes up_show {
+  0% {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+@-webkit-keyframes up_show {
+  0% {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+@-o-keyframes up_show {
+  0% {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+@keyframes up_show {
+  0% {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
 body {
-  background-image: url("../img/pattern.png");
+  background: linear-gradient(to right, #212121, #313131);
   font-family: 'Oxfam TSTAR PRO';
 }
 .container {
@@ -173,10 +225,12 @@ body {
 em {
   color: #fefefe;
 }
+/** INFORMATIONS **/
 .hide_left {
+  display: none;
   position: fixed;
   left: 260px;
-  top: 20;
+  top: 105px;
   z-index: 10;
   color: #e97846;
   font-weight: 600;
@@ -186,6 +240,7 @@ em {
   border-right: 1px solid #e97846;
 }
 .informations {
+  position: fixed;
   width: 260px;
 }
 .informations .mission_informations {
@@ -229,4 +284,78 @@ em {
   font-weight: 300;
   font-size: 11px;
   line-height: 16px;
+}
+/** GALERY **/
+.galery {
+  padding: 5px;
+  margin-left: 280px;
+  border-left: 1px solid #e97846;
+}
+.galery h2 {
+  color: #e97846;
+  font-weight: 400;
+  font-size: 16px;
+}
+.img_container {
+  position: relative;
+  display: inline-block;
+  width: 280px;
+  height: 280px;
+  margin: 5px;
+  padding: 5px;
+}
+.img_container img {
+  width: 100%;
+  height: 100%;
+}
+.img_container .img_actions {
+  display: none;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px;
+  width: 30px;
+  text-align: right;
+  border-top: 1px solid #92dcea;
+  border-right: 1px solid #92dcea;
+}
+.img_container .img_actions img {
+  height: 15px;
+  width: 15px;
+}
+.img_container span {
+  display: none;
+  position: absolute;
+  bottom: 10px;
+  left: 65px;
+  color: #fefefe;
+  font-size: 11px;
+  font-weight: 600;
+}
+.img_container .corner {
+  display: none;
+}
+.img_container .corner_top_left {
+  position: absolute;
+  padding: 5px;
+  top: 10px;
+  left: 10px;
+  border-top: 1px solid #92dcea;
+  border-left: 1px solid #92dcea;
+}
+.img_container .corner_bottom_left {
+  position: absolute;
+  padding: 5px;
+  bottom: 10px;
+  left: 10px;
+  border-bottom: 1px solid #92dcea;
+  border-left: 1px solid #92dcea;
+}
+.img_container .corner_bottom_right {
+  position: absolute;
+  padding: 5px;
+  bottom: 10px;
+  right: 10px;
+  border-bottom: 1px solid #92dcea;
+  border-right: 1px solid #92dcea;
 }

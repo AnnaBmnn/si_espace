@@ -29,7 +29,7 @@
         <h2>OPERATOR: <em>NASA</em></h2>
         <h2>MISSION: <em>MARS_EXPLORATION</em></h2>
       </div>
-
+      
       <div class="rover_informations">
         <h2>ROVER_INFORMATIONS</h2>
         <div>
@@ -68,37 +68,28 @@
         </div>
       </div>
     </div>
-    <?php foreach($photos_display as $_photo): ?>
-        <div class="img-container">
-            <img src="<?= $_photo->url ?>" alt="mars">    
-        </div>     
-    <?php endforeach; ?>
+    
+    <div class="galery">
+      <h2>PHOTOS_GALERY</h2>
+      <?php foreach($photos_display as $_photo): ?>
+          <div class="img_container">
+              
+            <div class="img_actions">
+              <img src="assets/img/Hearts.png" alt="Like">
+            </div>
+            <div class="corner corner_top_left"> </div>
+            <div class="corner corner_bottom_left"> </div>
+            <div class="corner corner_bottom_right"> </div>
+            <span>CLICK FOR MORE INFORMATIONS</span>
+            <img src="<?= $_photo->url ?>" />
+              
+          </div>     
+      <?php endforeach; ?>
+    </div>
   </div>
   
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <script src="assets/js/script.min.js"></script>
 
 </body>
-</html>
-
-
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
-        <title>Inventory Cheese</title>
-        <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
-        <link rel="stylesheet" href="main.css">
-    </head>
-    <body>
-        <?php foreach($photos_display as $_photo): ?>
-            <div class="img-container">
-                <img src="<?= $_photo->url ?>" alt="mars">    
-            </div>     
-        <?php endforeach; ?>
-    </body>    
 </html>
