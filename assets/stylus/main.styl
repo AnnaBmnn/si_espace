@@ -6,7 +6,7 @@ $orange = #e97846
 $blue = #92dcea
 
 body
-  background-image url(../img/pattern.png)
+  background: linear-gradient(to right, #212121 , #313131);
   font-family 'Oxfam TSTAR PRO'
   
 .container
@@ -15,10 +15,14 @@ body
 em
   color $white
   
+  
+/** INFORMATIONS **/
+  
 .hide_left
+  display none
   position fixed
   left 260px
-  top 20
+  top 105px
   z-index 10
   color $orange
   font-weight 600
@@ -28,6 +32,7 @@ em
   border-right 1px solid $orange
   
 .informations
+  position fixed
   width 260px
   
   .mission_informations
@@ -35,49 +40,116 @@ em
     padding 5px
     border-left 1px solid $orange
     margin-bottom 20px
-
+    
     h1
       display inline !important
       font-weight 500
       font-size 24px
       margin-bottom 10px
-
+      
     h2
       font-weight 400
       font-size 16px
-
+      
     span
       font-weight 400
       font-size 14px
-
+      
   .rover_informations
     display inline-block
     padding 5px 10px
     border-left 1px solid $orange
-
+    
     h2
       color $orange
       font-weight 400
       margin-bottom 5px
-
+      
     div
       padding 5px
       margin-bottom 10px
       border-left 1px solid $blue
-
+      
     span
     p
       color $blue
       font-weight 300
       font-size 11px
       line-height 16px
+     
       
-.img-container
-    width 200px
-    height 200px
-    display inline-block
-
-
-    img 
-        width 100%
-        height 100%
+/** GALERY **/
+  
+.galery
+  padding 5px
+  margin-left 280px
+  border-left 1px solid $orange
+  
+  h2
+    color $orange
+    font-weight 400
+    font-size 16px
+  
+.img_container
+  position relative
+  display inline-block
+  width 280px
+  height 280px
+  margin 5px
+  padding 5px
+  
+  img
+    width 100%
+    height 100%
+    
+  .img_actions
+    display none
+    position absolute
+    top 10px
+    right 10px
+    padding 5px
+    width 30px
+    text-align right
+    border-top 1px solid $blue
+    border-right 1px solid $blue
+    
+    img
+      height 15px
+      width 15px
+    
+  span
+    display none
+    position absolute
+    bottom 10px
+    left 65px
+    color $white
+    font-size 11px
+    font-weight 600
+    
+  .corner
+    display none
+    
+  .corner_top_left
+    position absolute
+    padding 5px
+    top 10px
+    left 10px
+    border-top 1px solid $blue
+    border-left 1px solid $blue
+      
+  .corner_bottom_left
+    position absolute
+    padding 5px
+    bottom 10px
+    left 10px
+    border-bottom 1px solid $blue
+    border-left 1px solid $blue
+      
+  .corner_bottom_right
+    position absolute
+    padding 5px
+    bottom 10px
+    right 10px
+    border-bottom 1px solid $blue
+    border-right 1px solid $blue
+    

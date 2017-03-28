@@ -5,6 +5,9 @@
     -ms-transition none !important
     -o-transition none !important
   
+  
+/** KEYFRAMES **/
+  
 @keyframes left_show {
   0% {
     transform translateX(-40px);
@@ -38,6 +41,20 @@
   }
 }
 
+@keyframes up_show {
+  0% {
+    transform translateY(40px);
+    opacity: 0;
+  }
+  100% {
+    transform translateY(0px);
+    opacity: 1;
+  }
+}
+
+
+/** AFTER LOADING **/
+
 .hide_left
 .mission_informations
 .rover_informations
@@ -57,11 +74,26 @@
     for row in 1 2 3 4
       &:nth-child({row})
         animation-delay 0.25s * row
-        
-.hide_left:hover
-  .mission_informations
-  .rover_informations
-    animation-name left_hide
-    animation-delay 0.2s
-    animation-duration 0.5s
-    animation-fill-mode forwards
+    
+.galery
+  opacity 0
+  animation-name up_show
+  animation-delay 0.4s
+  animation-duration 0.5s
+  animation-fill-mode forwards
+  
+.img-container
+  opacity 0
+  animation-name up_show
+  animation-delay 0.75s
+  animation-duration 0.5s
+  animation-fill-mode forwards
+  
+  
+/** IMAGE ACTIONS **/
+
+.img_container:hover
+  .img_actions
+  .corner
+  span
+    display block
