@@ -3,15 +3,11 @@
     include 'includes/config.php';
 
     // Préparation de la requête
-    $query = $pdo->query('SELECT * FROM rover_photo WHERE sol=100');
+    $query = $pdo->query('SELECT * FROM rover_photo WHERE sol=20');
 
     // Éxécution de la requête et récupération des données
     $photos_display = $query->fetchAll();
 
-    echo '<pre>';
-    print_r($_SESSION);
-    echo '</pre>';
-    
 ?>
 
 <!DOCTYPE html>
@@ -23,10 +19,7 @@
   <link rel="stylesheet" type="text/css" href="assets/css/main.css">
 </head>
 
-<body class="preload">
-  
-  <div class="container">
-    
+<body class="preload">    
     <span class="hide_left"><</span>
     <div class="informations">
       <div class="mission_informations">
@@ -77,7 +70,7 @@
     <div class="galery">
       <h2>PHOTOS_GALERY</h2>
       <?php foreach($photos_display as $_photo): ?>
-          <div class="img_container">
+          <div class="img_container" data-id="<?= $_photo->id ?>" data-like="false">
               
             <div class="img_actions">
               <img src="assets/img/Hearts.png" alt="Like">
@@ -86,7 +79,7 @@
             <div class="corner corner_bottom_left"> </div>
             <div class="corner corner_bottom_right"> </div>
             <span>CLICK FOR MORE INFORMATIONS</span>
-            <img src="<?= $_photo->url ?>" />
+            <!--<img src=< $_photo->url ?> />-->
               
           </div>     
       <?php endforeach; ?>
