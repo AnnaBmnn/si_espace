@@ -1,0 +1,232 @@
+.preload div {
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -ms-transition: none !important;
+  -o-transition: none !important;
+}
+.hide_left,
+.mission_informations,
+.rover_informations {
+  opacity: 0;
+  animation-name: left_show;
+  animation-delay: 0.2s;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+.mission_informations div,
+.rover_informations div {
+  opacity: 0;
+  animation-name: left_plus_show;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+}
+.mission_informations div:nth-child(1),
+.rover_informations div:nth-child(1) {
+  animation-delay: 0.25s;
+}
+.mission_informations div:nth-child(2),
+.rover_informations div:nth-child(2) {
+  animation-delay: 0.5s;
+}
+.mission_informations div:nth-child(3),
+.rover_informations div:nth-child(3) {
+  animation-delay: 0.75s;
+}
+.mission_informations div:nth-child(4),
+.rover_informations div:nth-child(4) {
+  animation-delay: 1s;
+}
+.hide_left:hover .mission_informations,
+.hide_left:hover .rover_informations {
+  animation-name: left_hide;
+  animation-delay: 0.2s;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+}
+@-moz-keyframes left_show {
+  0% {
+    transform: translateX(-40px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+@-webkit-keyframes left_show {
+  0% {
+    transform: translateX(-40px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+@-o-keyframes left_show {
+  0% {
+    transform: translateX(-40px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+@keyframes left_show {
+  0% {
+    transform: translateX(-40px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+@-moz-keyframes left_plus_show {
+  0% {
+    transform: translateX(-10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+@-webkit-keyframes left_plus_show {
+  0% {
+    transform: translateX(-10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+@-o-keyframes left_plus_show {
+  0% {
+    transform: translateX(-10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+@keyframes left_plus_show {
+  0% {
+    transform: translateX(-10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+@-moz-keyframes left_hide {
+  0% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-40px);
+    opacity: 0;
+  }
+}
+@-webkit-keyframes left_hide {
+  0% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-40px);
+    opacity: 0;
+  }
+}
+@-o-keyframes left_hide {
+  0% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-40px);
+    opacity: 0;
+  }
+}
+@keyframes left_hide {
+  0% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-40px);
+    opacity: 0;
+  }
+}
+body {
+  background-image: url("../img/pattern.png");
+  font-family: 'Oxfam TSTAR PRO';
+}
+.container {
+  padding: 20px 30px;
+}
+em {
+  color: #fefefe;
+}
+.hide_left {
+  position: fixed;
+  left: 260px;
+  top: 20;
+  z-index: 10;
+  color: #e97846;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 5px;
+  border-top: 1px solid #e97846;
+  border-right: 1px solid #e97846;
+}
+.informations {
+  width: 260px;
+}
+.informations .mission_informations {
+  color: #e97846;
+  padding: 5px;
+  border-left: 1px solid #e97846;
+  margin-bottom: 20px;
+}
+.informations .mission_informations h1 {
+  display: inline !important;
+  font-weight: 500;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+.informations .mission_informations h2 {
+  font-weight: 400;
+  font-size: 16px;
+}
+.informations .mission_informations span {
+  font-weight: 400;
+  font-size: 14px;
+}
+.informations .rover_informations {
+  display: inline-block;
+  padding: 5px 10px;
+  border-left: 1px solid #e97846;
+}
+.informations .rover_informations h2 {
+  color: #e97846;
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+.informations .rover_informations div {
+  padding: 5px;
+  margin-bottom: 10px;
+  border-left: 1px solid #92dcea;
+}
+.informations .rover_informations span,
+.informations .rover_informations p {
+  color: #92dcea;
+  font-weight: 300;
+  font-size: 11px;
+  line-height: 16px;
+}

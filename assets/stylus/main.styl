@@ -1,0 +1,73 @@
+@import 'animations'
+
+$black = #212121
+$white = #fefefe
+$orange = #e97846
+$blue = #92dcea
+
+body
+  background-image url(../img/pattern.png)
+  font-family 'Oxfam TSTAR PRO'
+  
+.container
+  padding 20px 30px
+  
+em
+  color $white
+  
+.hide_left
+  position fixed
+  left 260px
+  top 20
+  z-index 10
+  color $orange
+  font-weight 600
+  cursor pointer
+  padding 5px
+  border-top 1px solid $orange
+  border-right 1px solid $orange
+  
+.informations
+  width 260px
+  
+  .mission_informations
+    color $orange
+    padding 5px
+    border-left 1px solid $orange
+    margin-bottom 20px
+
+    h1
+      display inline !important
+      font-weight 500
+      font-size 24px
+      margin-bottom 10px
+
+    h2
+      font-weight 400
+      font-size 16px
+
+    span
+      font-weight 400
+      font-size 14px
+
+  .rover_informations
+    display inline-block
+    padding 5px 10px
+    border-left 1px solid $orange
+
+    h2
+      color $orange
+      font-weight 400
+      margin-bottom 5px
+
+    div
+      padding 5px
+      margin-bottom 10px
+      border-left 1px solid $blue
+
+    span
+    p
+      color $blue
+      font-weight 300
+      font-size 11px
+      line-height 16px

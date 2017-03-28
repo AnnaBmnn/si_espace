@@ -1,0 +1,67 @@
+.preload
+  div
+    -webkit-transition none !important
+    -moz-transition none !important
+    -ms-transition none !important
+    -o-transition none !important
+  
+@keyframes left_show {
+  0% {
+    transform translateX(-40px);
+    opacity: 0;
+  }
+  100% {
+    transform translateX(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes left_plus_show {
+  0% {
+    transform translateX(-10px);
+    opacity: 0;
+  }
+  100% {
+    transform translateX(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes left_hide {
+  0% {
+    transform translateX(0px);
+    opacity: 1;
+  }
+  100% {
+    transform translateX(-40px);
+    opacity: 0;
+  }
+}
+
+.hide_left
+.mission_informations
+.rover_informations
+  opacity 0
+  animation-name left_show
+  animation-delay 0.2s
+  animation-duration 0.5s
+  animation-fill-mode forwards
+  
+.mission_informations
+.rover_informations
+  div
+    opacity 0
+    animation-name left_plus_show
+    animation-duration 0.3s
+    animation-fill-mode forwards
+    for row in 1 2 3 4
+      &:nth-child({row})
+        animation-delay 0.25s * row
+        
+.hide_left:hover
+  .mission_informations
+  .rover_informations
+    animation-name left_hide
+    animation-delay 0.2s
+    animation-duration 0.5s
+    animation-fill-mode forwards
