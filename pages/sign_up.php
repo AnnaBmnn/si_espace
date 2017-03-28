@@ -1,3 +1,10 @@
+<?php
+    include '../includes/config.php';
+    include '../includes/create_user.php';
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,16 +28,16 @@
             </div>
             <form action="#" method="post">
                 <div>
-                    <label for="name">Choose a username</label>
-                    <input type="text" name="user" value="" placeholder="JohnSmith" id="user">
+                    <label for="name_subscribe">Choose a username</label>
+                    <input type="text" name="name_subscribe" value="" placeholder="JohnSmith" id="user">
                 </div>
                 <div>
                     <label for="email">Enter your email</label>
                     <input type="text" name="user" value="" placeholder="JohnSmith" id="user">
                 </div>
                 <div>
-                    <label for="pswd">Password</label>
-                    <input type="password" name="pswd" value="" id="pswd" placeholder="*****">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" value="" id="password" placeholder="*****">
                 </div>
                 <div>
                     <label for="pswd">Confirm the password</label>

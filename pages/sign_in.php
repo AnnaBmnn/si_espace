@@ -1,3 +1,9 @@
+<?php
+    include '../includes/config.php';
+    include '../includes/login_user.php';
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,8 +27,8 @@
             </div>
             <form action="#" method="post">
                 <div>
-                    <label for="name">Username</label>
-                    <input type="text" name="user" value="" placeholder="JohnSmith" id="user">
+                    <label for="name_login">Username</label>
+                    <input type="text" name="name_login" value="" placeholder="JohnSmith" id="name_login">
                 </div>
                 <div>
                     <label for="postscriptum">Password</label>
