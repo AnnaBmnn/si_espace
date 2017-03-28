@@ -14,11 +14,6 @@
                     $error = true;                
             }
         }
-        echo '<pre>';
-        print_r($error);
-        echo '</pre>';
-        
-
         // SQL query
         if(!$error){
             $prepare = $pdo->prepare('INSERT INTO users (name,password) VALUES (:name,:password)');
@@ -34,8 +29,9 @@
                 sol INT(255),
                 id_rover INT(255) NOT NULL,
                 camera VARCHAR(255) NOT NULL)";  
-                $pdo->query($sql);                        //create a new table for each users in database
-            $_SESSION['user'] = $name_subscribe;
+            $pdo->query($sql);                        //create a new table for each users in database
+            header('Location: ../index.php'); 
+            
         } else {
             echo 'le nom existe déjà';
         }

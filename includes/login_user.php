@@ -12,7 +12,9 @@ if(isset($_POST['name_login'])){
     $user = $prepare->fetch();
 
     // Test password
-    if($user->password == $password)
+    if($user->password == $password){
         $_SESSION['user'] = $name_login;
-    
+        header('Location: ../index.php');
+    }
+        
 }

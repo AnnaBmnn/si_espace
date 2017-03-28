@@ -26,7 +26,7 @@
            <a class="log1" href="#">SIGN IN</a>
            <a class="log2" href="sign_up.php">SIGN UP</a>
             </div>
-            <form action="../index.php" method="post">
+            <form action="#" method="post">
                 <div>
                     <label for="name_login">Username</label>
                     <input type="text" name="name_login" value="" placeholder="JohnSmith" id="name_login">
