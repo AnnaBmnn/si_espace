@@ -8,6 +8,17 @@
 
   // Éxécution de la requête et récupération des données
   $photos_display = $query->fetchAll();
+
+    session_start();
+    include 'includes/config.php';
+
+
+    // Préparation de la requête
+    $query = $pdo->query('SELECT * FROM rover_photo WHERE sol=20');
+
+    // Éxécution de la requête et récupération des données
+    $photos_display = $query->fetchAll();
+
 ?>
 
 <!DOCTYPE html>
@@ -16,6 +27,7 @@
   <meta charset="UTF-8">
   <title>Curiosity's Gallery</title>
   <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="assets/css/main.css">
 </head>
 
@@ -25,7 +37,7 @@
   
   <header class="preload">
     <nav>
-      <a href="https://www.nasa.gov/" target="_blank" title="Home" id="home">NASA</a>
+      <a href="https://www.nasa.gov/" target="_blank" title="Home" id="nasa">NASA</a>
       <div class="nav_links">
         <a href="#gallery_anchor" title="Gallery" id="gallery">GALLERY</a>
         <a href="#" title="SignUp">SUBSCRIBE</a>
@@ -126,7 +138,7 @@
               <div class="corner_top_right"></div>
               <div class="corner_bottom_right"></div>
               <div class="corner_bottom_left"></div>
-              <div class="img_plus">+</div>
+              <div class="img_plus" data_id="<?= $_photo->id ?>" data_like="<?= empty($photo_liked)?'false':'true' ?>">+</div>
             </div>
             <img src="<?= $_photo->url ?>" />
           </div>     
