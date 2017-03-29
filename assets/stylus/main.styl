@@ -1,12 +1,7 @@
-@import 'animations'
-@import 'modal'
-@import url('https://fonts.googleapis.com/css?family=Roboto')
-
 $black = #212121
 $white = #fefefe
 $orange = #ffc371
 $red = #ff5f6d
-$blue = #92dcea
 
 @font-face
   font-family 'Oxfam TSTAR PRO'
@@ -27,6 +22,11 @@ $blue = #92dcea
     url('../fonts/OxfamTSTARPRO-Headline.ttf') format('truetype'),
     url('../fonts/OxfamTSTARPRO-Headline.svg#OxfamTSTARPRO-Medium') format('svg')
   font-style normal
+  
+@import 'form'
+@import 'animations'
+@import 'modal'
+@import url('https://fonts.googleapis.com/css?family=Roboto')
 
 body
   background-color $white
@@ -89,7 +89,7 @@ header
     position relative
     padding 20px 150px
     
-    #nasa
+    #home
       font-family 'Oxfam TSTAR PRO Headline'
       font-size 22px
       font-weight 800
@@ -325,6 +325,3 @@ header
       img
         width 100%
         height 100%
-  
-  
-@import 'form'

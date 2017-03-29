@@ -9,23 +9,13 @@
   // Éxécution de la requête et récupération des données
   $photos_display = $query->fetchAll();
 
-    session_start();
-    include 'includes/config.php';
-
-
-    // Préparation de la requête
-    $query = $pdo->query('SELECT * FROM rover_photo WHERE sol=20');
-
-    // Éxécution de la requête et récupération des données
-    $photos_display = $query->fetchAll();
-
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Curiosity's Gallery</title>
+  <title>Rover's Eyes</title>
   <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="assets/css/main.css">
@@ -37,11 +27,11 @@
   
   <header class="preload">
     <nav>
-      <a href="https://www.nasa.gov/" target="_blank" title="Home" id="nasa">NASA</a>
+      <a href="index.php" target="_self" title="Home" id="home">ROVER'S EYES</a>
       <div class="nav_links">
         <a href="#gallery_anchor" title="Gallery" id="gallery">GALLERY</a>
-        <a href="#" title="SignUp">SUBSCRIBE</a>
-        <a href="#" title="SignIn">LOGIN</a>
+        <a href="pages/sign_up.php" title="SignUp">SUBSCRIBE</a>
+        <a href="pages/sign_in.php" title="SignIn">LOGIN</a>
       </div>
     </nav>
   </header>
@@ -131,19 +121,21 @@
     <div class="gallery" id="gallery_anchor">
       <div class="gallery_title"><h2>PHOTOS GALLERY</h2></div>
       <div class="gallery_display">
-      <?php foreach($photos_display as $_photo): ?>
-          <div class="img_container">
-            <div class="img_actions">
-              <div class="corner_top_left"></div>
-              <div class="corner_top_right"></div>
-              <div class="corner_bottom_right"></div>
-              <div class="corner_bottom_left"></div>
-              <div class="img_plus" data_id="<?= $_photo->id ?>" data_like="<?= empty($photo_liked)?'false':'true' ?>">+</div>
-            </div>
-            <img src="<?= $_photo->url ?>" />
-          </div>     
-      <?php endforeach; ?>
+        <?php foreach($photos_display as $_photo): ?>
+            <div class="img_container">
+              <div class="img_actions">
+                <div class="corner_top_left"></div>
+                <div class="corner_top_right"></div>
+                <div class="corner_bottom_right"></div>
+                <div class="corner_bottom_left"></div>
+                <div class="img_plus" data_id="<?= $_photo->id ?>" data_like="<?= empty($photo_liked)?'false':'true' ?>">+</div>
+              </div>
+              <img src="<?= $_photo->url ?>" />
+            </div>     
+        <?php endforeach; ?>
+      </div>
     </div>
+    
   </div>
   
   <a class="back_top"><img src="assets/img/cd-top-arrow.svg"></a>

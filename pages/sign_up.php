@@ -1,53 +1,60 @@
 <?php
-    session_start();
-    include '../includes/config.php';
-    include '../includes/create_user.php';
-    
-
+  session_start();
+  include '../includes/config.php';
+  include '../includes/create_user.php';
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
-    <title>Title</title>
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/reset.css">
-    <link rel="stylesheet" href="../assets/css/main.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+  <title>Rover's Eyes</title>
+  <link rel="stylesheet" href="../assets/css/reset.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/main.css">
 </head>
 
 <body>
-    <div class="login-box">
-        <div class="left">
+  
+  <header class="no_animations">
+    <nav>
+      <a href="../index.php" target="_self" title="Home" id="home">ROVER'S EYES</a>
+      <div class="nav_links">
+        <a href="../index.php#gallery_anchor" title="Gallery" id="gallery">GALLERY</a>
+        <a href="sign_up.php" title="SignUp">SUBSCRIBE</a>
+        <a href="sign_in.php" title="SignIn">LOGIN</a>
+      </div>
+    </nav>
+  </header>
+ 
+  <div class="container login-box">
+    <div class="form_img">
+      <img src="../assets/img/mars-form.JPG" alt="Mars">
+      <div class="img_filter"></div>
+    </div>
+    <div class="form_text">
+      <div class="form_links">
+          <a class="link_1" href="sign_in.php">SIGN IN</a>
+          <a class="link_2 active" href="sign_up.php">SIGN UP</a>
+      </div>
+      <form action="#" method="post">
+        <div>
+          <label for="name_subscribe">USERNAME</label>
+          <input type="text" name="name_subscribe" value="" placeholder="" id="name_subscribe">
         </div>
-        <div class="right">
-            <div class="log">
-                <a class="log1" href="sign_in.php">SIGN IN</a>
-                <a class="log2" href="#">SIGN UP</a>
-            </div>
-            <form action="#" method="post">
-                <div>
-                    <label for="name_subscribe">Choose a username</label>
-                    <input type="text" name="name_subscribe" value="" placeholder="JohnSmith" id="name_subscribe">
-                </div>
-                <div>
-                    <label for="email">Enter your email</label>
-                    <input type="text" name="user" value="" placeholder="JohnSmith" id="user">
-                </div>
-                <div>
-                    <label for="password">Password</label>
-                    <input type="password" name="password" value="" id="password" placeholder="*****">
-                </div>
-                <div>
-                    <label for="pswd">Confirm the password</label>
-                    <input type="password" name="pswd" value="" id="pswd" placeholder="*****">
-                </div>
-                <input type="submit">
-            </form>
+        <div>
+          <label for="password">PASSWORD</label>
+          <input type="password" name="password" value="" id="password" placeholder="">
         </div>
-</body>
-
+        <input type="submit" value="SUBSCRIBE">
+    </form>
+    </div>
+  </div>
+  
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="assets/js/script.min.js"></script>
+  
+</body>  
 </html>
