@@ -22,17 +22,15 @@ $(window).load(function() {
   
 });
 
-var image_container = document.querySelectorAll('.img_container'),
+var image_container = document.querySelectorAll('.img_plus'),
     body = document.querySelector('body'),
     photo_liked = [];
 for(var i=0; i<image_container.length; i++){
     if(image_container[i].dataset.like == 'true'){
         photo_liked[photo_liked.length] = image_container[i].dataset.id;
-        console.log(photo_liked);
     }
 };
 
-console.log(body);
 
 for(var i=0; i<image_container.length; i++){
     image_container[i].addEventListener('click',function(){
@@ -85,4 +83,3 @@ function create_data_string(tab){
     }
     return data_string ;
 }
-

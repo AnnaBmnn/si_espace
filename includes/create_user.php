@@ -16,6 +16,7 @@
         }
         // SQL query
         if(!$error){
+            $_SESSION['user']=$name_subscribe;
             $prepare = $pdo->prepare('INSERT INTO users (name,password) VALUES (:name,:password)');
             $prepare->bindValue('name',$name_subscribe);
             $prepare->bindValue('password',$password);

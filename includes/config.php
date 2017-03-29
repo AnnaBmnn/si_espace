@@ -2,7 +2,7 @@
 
 // Connexions
 define('DB_HOST','localhost');
-define('DB_NAME','si');
+define('DB_NAME','si_espace');
 define('DB_USER','root');
 define('DB_PASS','root');
 
