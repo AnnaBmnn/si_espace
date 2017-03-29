@@ -2,9 +2,25 @@ $(window).load(function() {
   
   $('body').removeClass('preload');
     
-
+  $('.loader').hide()
+  $('header').removeClass('preload');
+  $('#content').removeClass('preload');
   
-})
+  $(window).scroll(function() {
+    if ($(this).scrollTop() >= 1800){
+      $('.back_top').show();
+    }else{
+      $('.back_top').hide(); 
+    }
+  });
+
+  $('.back_top').click(function(){
+    $('body,html').animate({
+      scrollTop : 1600
+    }, 1000);
+  });
+  
+});
 
 var image_container = document.querySelectorAll('.img_container'),
     body = document.querySelector('body'),
