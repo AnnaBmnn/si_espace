@@ -1,157 +1,330 @@
 @import 'animations'
+@import 'modal'
+@import url('https://fonts.googleapis.com/css?family=Roboto')
 
 $black = #212121
 $white = #fefefe
-$orange = #e97846
+$orange = #ffc371
+$red = #ff5f6d
 $blue = #92dcea
 
-body
-  background: linear-gradient(to right, #212121 , #313131);
+@font-face
   font-family 'Oxfam TSTAR PRO'
+  src url('../fonts/OxfamTSTARPRO-Medium.eot')
+  src url('../fonts/OxfamTSTARPRO-Medium.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/OxfamTSTARPRO-Medium.woff2') format('woff2'),
+    url('../fonts/OxfamTSTARPRO-Medium.woff') format('woff'),
+    url('../fonts/OxfamTSTARPRO-Medium.ttf') format('truetype'),
+    url('../fonts/OxfamTSTARPRO-Medium.svg#OxfamTSTARPRO-Medium') format('svg')
+  font-style normal
+  
+@font-face
+  font-family 'Oxfam TSTAR PRO Headline'
+  src url('../fonts/OxfamTSTARPRO-Headline.eot')
+  src url('../fonts/OxfamTSTARPRO-Headline.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/OxfamTSTARPRO-Headline.woff2') format('woff2'),
+    url('../fonts/OxfamTSTARPRO-Headline.woff') format('woff'),
+    url('../fonts/OxfamTSTARPRO-Headline.ttf') format('truetype'),
+    url('../fonts/OxfamTSTARPRO-Headline.svg#OxfamTSTARPRO-Medium') format('svg')
+  font-style normal
+
+body
+  background-color $white
+  font-family 'Oxfam TSTAR PRO'
+  overflow-y overlay
   
 .container
-  padding 20px 30px
-  
-em
-  color $white
-  
-  
-/** INFORMATIONS **/
-  
-.hide_left
+  padding 20px 150px
+
+
+/** LOADER **/  
+
+.loader
+  position fixed
+  top 300px
+  left 600px
+  border 5px solid $white
+  border-top 5px solid $red
+  border-bottom 2px solid $red
+  border-radius 50px
+  width 80px
+  height 80px
+
+
+/** SCROLLBAR **/
+
+::-webkit-scrollbar
+  position fixed
+  width 3px
+  background-color $white
+
+::-webkit-scrollbar-thumb
+  -webkit-box-shadow inset 0 0 6px rgba(0,0,0,.3)
+  background-color $red
+
+
+/** BACK TO TOP **/
+
+.back_top
   display none
   position fixed
-  left 260px
-  top 105px
-  z-index 10
-  color $orange
-  font-weight 600
-  cursor pointer
-  padding 5px
-  border-top 1px solid $orange
-  border-right 1px solid $orange
-  
-.informations
-  position fixed
-  width 260px
-  
-  .mission_informations
-    color $orange
-    padding 5px
-    border-left 1px solid $orange
-    margin-bottom 20px
+  bottom 20px
+  right 52px
+  background-color $red
+  width 40px
+  height 40px
+  transition all 0.3s ease
     
-    h1
-      display inline !important
-      font-weight 500
-      font-size 24px
-      margin-bottom 10px
-      
-    h2
-      font-weight 400
-      font-size 16px
-      
-    span
-      font-weight 400
-      font-size 14px
-      
-  .rover_informations
-    display inline-block
-    padding 5px 10px
-    border-left 1px solid $orange
+  img
+    width 20px
+    height 20px
+    margin 10px
+
+
+/** HEADER **/
+
+header
+  
+  nav
+    position relative
+    padding 20px 150px
     
-    h2
-      color $orange
-      font-weight 400
-      margin-bottom 5px
+    #nasa
+      font-family 'Oxfam TSTAR PRO Headline'
+      font-size 22px
+      font-weight 800
+      
+    a
+      text-decoration none
+      color $black
+      font-size 15px
+      font-weight 700
       
     div
-      padding 5px
-      margin-bottom 10px
-      border-left 1px solid $blue
+      display inline-block
+      position absolute
+      top 23px
+      right 150px
       
-    span
-    p
-      color $blue
-      font-weight 300
-      font-size 11px
-      line-height 16px
-     
-      
-/** GALERY **/
-  
-.galery
-  padding 5px
-  margin-left 280px
-  border-left 1px solid $orange
-  
-  h2
-    color $orange
-    font-weight 400
-    font-size 16px
-  
-.img_container
+      a
+        margin-left 30px
+        
+      #gallery
+        color $red
+        font-weight 800
+
+
+/** INTRO COVER **/
+
+.intro
   position relative
-  display inline-block
-  width 280px
-  height 280px
-  margin 5px
-  padding 5px
+  margin-bottom 80px
   
-  img
-    width 100%
-    height 100%
-    
-  .img_actions
-    display none
+  h1
     position absolute
-    top 10px
-    right 10px
-    padding 5px
-    width 30px
-    text-align right
-    border-top 1px solid $blue
-    border-right 1px solid $blue
+    top 130px
+    left -78px
+    z-index 2
+    font-family 'Oxfam TSTAR PRO Headline'
+    color $black
+    font-size 72px
+    font-weight 800
+      
+    em
+      color $white
     
-    img
-      height 15px
-      width 15px
+  .intro_line_left
+    position absolute
+    top 215px
+    left -80px
+    width 100px
+    height 1px
+    border-bottom 2px solid $black 
+    
+  .intro_line_right
+    position absolute
+    top 215px
+    left 0
+    z-index 2
+    width 100px
+    height 1px
+    border-bottom 2px solid $white
     
   span
-    display none
-    position absolute
-    bottom 10px
-    left 65px
+    z-index 2
     color $white
-    font-size 11px
     font-weight 600
     
-  .corner
-    display none
+  #discover
+    position absolute
+    top 210px
+    left 110px
     
-  .corner_top_left
+  #explore
     position absolute
-    padding 5px
-    top 10px
-    left 10px
-    border-top 1px solid $blue
-    border-left 1px solid $blue
-      
-  .corner_bottom_left
-    position absolute
-    padding 5px
-    bottom 10px
-    left 10px
-    border-bottom 1px solid $blue
-    border-left 1px solid $blue
-      
-  .corner_bottom_right
-    position absolute
-    padding 5px
-    bottom 10px
-    right 10px
-    border-bottom 1px solid $blue
-    border-right 1px solid $blue
+    top 235px
+    left 110px
     
+  #live
+    position absolute
+    top 260px
+    left 110px
+    
+  .intro_line_up
+    position absolute
+    bottom 0
+    left 50%
+    z-index 2
+    width 1px
+    height 60px
+    border-left 2px solid $white 
+    
+  .intro_line_down
+    position absolute
+    bottom -57px
+    left 50%
+    z-index 2
+    width 1px
+    height 60px
+    border-left 2px solid $black
+    
+  img
+    max-width 100%
+
+
+/** DESCRIPTION **/
+
+.description
+  position relative
+  padding 0 150px
+  margin-bottom 140px
+  display flex
+  justify-content space-around
+  align-items center
+  
+  .description_image
+    position relative
+    
+    h2
+      position absolute
+      top -34px
+      left 10px
+      font-family 'Oxfam TSTAR PRO Headline'
+      font-size 36px
+      font-weight 800
+      color $red
+      
+      em
+        color $white
+    
+    img
+      width 250px
+      
+  .description_text
+    padding 0 25px
+    width 500px
+    
+    h3
+      font-family 'Oxfam TSTAR PRO'
+      font-size 22px
+      font-weight 600
+      margin-bottom 20px
+      
+    p
+      font-family 'Roboto'
+      font-size 12px
+      line-height 16px
+    
+  .description_line_down
+    position absolute
+    top 105%
+    left 50%
+    z-index 2
+    width 1px
+    height 100px
+    border-left 2px solid $black
+
+
+/** INSTRUMENTS **/
+
+.instruments
+  position relative
+  padding 0 150px
+  margin-bottom 140px
+  display flex
+  justify-content space-around
+  align-items center
+  
+  .instruments_image
+    position relative
+    
+    h2
+      position absolute
+      top -34px
+      left 10px
+      font-family 'Oxfam TSTAR PRO Headline'
+      font-size 36px
+      font-weight 800
+      color $orange
+      
+      em
+        color $white
+    
+    img
+      width 250px
+      
+  .instruments_text
+    padding 0 25px
+    width 500px
+    
+    h3
+      font-family 'Oxfam TSTAR PRO'
+      font-size 22px
+      font-weight 600
+      margin-bottom 20px
+      
+    p
+      font-family 'Roboto'
+      font-size 12px
+      line-height 16px
+    
+  .instruments_line_down
+    position absolute
+    top 105%
+    left 50%
+    z-index 2
+    width 1px
+    height 100px
+    border-left 2px solid $black
+
+
+/** GALLERY **/
+
+.gallery
+  
+  .gallery_title
+    text-align center
+    margin-bottom 20px
+      
+    h2
+      display inline-block
+      font-family 'Oxfam TSTAR PRO Headline'
+      font-size 36px
+      font-weight 800
+      padding-bottom 10px
+      border-bottom 2px solid $orange
+    
+  .gallery_display
+      
+    .img_container
+      display inline-block
+      position relative
+      width 323px
+      height 323px
+      
+      img
+        width 100%
+        height 100%
+  
+  
 @import 'form'
-    
