@@ -12,7 +12,7 @@ $red = #ff5f6d
     url('../fonts/OxfamTSTARPRO-Medium.ttf') format('truetype'),
     url('../fonts/OxfamTSTARPRO-Medium.svg#OxfamTSTARPRO-Medium') format('svg')
   font-style normal
-  
+
 @font-face
   font-family 'Oxfam TSTAR PRO Headline'
   src url('../fonts/OxfamTSTARPRO-Headline.eot')
@@ -22,7 +22,7 @@ $red = #ff5f6d
     url('../fonts/OxfamTSTARPRO-Headline.ttf') format('truetype'),
     url('../fonts/OxfamTSTARPRO-Headline.svg#OxfamTSTARPRO-Medium') format('svg')
   font-style normal
-  
+
 @import 'form'
 @import 'animations'
 @import 'modal'
@@ -32,7 +32,7 @@ body
   background-color $white
   font-family 'Oxfam TSTAR PRO'
   overflow-y overlay
-  
+
 .container
   padding 20px 150px
 
@@ -74,7 +74,7 @@ body
   width 40px
   height 40px
   transition all 0.3s ease
-    
+
   img
     width 20px
     height 20px
@@ -84,31 +84,35 @@ body
 /** HEADER **/
 
 header
-  
+
   nav
     position relative
     padding 20px 150px
-    
+
     #home
       font-family 'Oxfam TSTAR PRO Headline'
       font-size 22px
       font-weight 800
-      
+
+      img
+        height 17px
+        width auto
+
     a
       text-decoration none
       color $black
       font-size 15px
       font-weight 700
-      
+
     div
       display inline-block
       position absolute
       top 23px
       right 150px
-      
+
       a
         margin-left 30px
-        
+
       #gallery
         color $red
         font-weight 800
@@ -119,7 +123,7 @@ header
 .intro
   position relative
   margin-bottom 80px
-  
+
   h1
     position absolute
     top 130px
@@ -129,10 +133,10 @@ header
     color $black
     font-size 72px
     font-weight 800
-      
+
     em
       color $white
-    
+
   .intro_line_left
     position absolute
     top 215px
@@ -140,7 +144,7 @@ header
     width 100px
     height 1px
     border-bottom 2px solid $black 
-    
+
   .intro_line_right
     position absolute
     top 215px
@@ -149,27 +153,27 @@ header
     width 100px
     height 1px
     border-bottom 2px solid $white
-    
+
   span
     z-index 2
     color $white
     font-weight 600
-    
+
   #discover
     position absolute
     top 210px
     left 110px
-    
+
   #explore
     position absolute
     top 235px
     left 110px
-    
+
   #live
     position absolute
     top 260px
     left 110px
-    
+
   .intro_line_up
     position absolute
     bottom 0
@@ -178,7 +182,7 @@ header
     width 1px
     height 60px
     border-left 2px solid $white 
-    
+
   .intro_line_down
     position absolute
     bottom -57px
@@ -187,7 +191,7 @@ header
     width 1px
     height 60px
     border-left 2px solid $black
-    
+
   img
     max-width 100%
 
@@ -201,10 +205,10 @@ header
   display flex
   justify-content space-around
   align-items center
-  
+
   .description_image
     position relative
-    
+
     h2
       position absolute
       top -34px
@@ -213,28 +217,28 @@ header
       font-size 36px
       font-weight 800
       color $red
-      
+
       em
         color $white
-    
+
     img
       width 250px
-      
+
   .description_text
     padding 0 25px
     width 500px
-    
+
     h3
       font-family 'Oxfam TSTAR PRO'
       font-size 22px
       font-weight 600
       margin-bottom 20px
-      
+
     p
       font-family 'Roboto'
       font-size 12px
       line-height 16px
-    
+
   .description_line_down
     position absolute
     top 105%
@@ -254,10 +258,10 @@ header
   display flex
   justify-content space-around
   align-items center
-  
+
   .instruments_image
     position relative
-    
+
     h2
       position absolute
       top -34px
@@ -266,28 +270,28 @@ header
       font-size 36px
       font-weight 800
       color $orange
-      
+
       em
         color $white
-    
+
     img
       width 250px
-      
+
   .instruments_text
     padding 0 25px
     width 500px
-    
+
     h3
       font-family 'Oxfam TSTAR PRO'
       font-size 22px
       font-weight 600
       margin-bottom 20px
-      
+
     p
       font-family 'Roboto'
       font-size 12px
       line-height 16px
-    
+
   .instruments_line_down
     position absolute
     top 105%
@@ -301,11 +305,11 @@ header
 /** GALLERY **/
 
 .gallery
-  
+
   .gallery_title
     text-align center
     margin-bottom 20px
-      
+
     h2
       display inline-block
       font-family 'Oxfam TSTAR PRO Headline'
@@ -313,15 +317,29 @@ header
       font-weight 800
       padding-bottom 10px
       border-bottom 2px solid $orange
-    
+
   .gallery_display
-      
+
     .img_container
       display inline-block
       position relative
       width 323px
       height 323px
-      
-      img
+
+      .img_img
         width 100%
         height 100%
+
+  .add_popup
+    display none
+    position fixed
+    bottom 0
+    left 50% - 10px
+    z-index 10
+    width 250px
+    padding 10px 20px
+    background-color $orange
+    text-align center
+    font-family 'Oxfam TSTAR PRO Headline'
+    font-size 14px
+    color $white

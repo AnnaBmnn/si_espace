@@ -64,6 +64,17 @@
   }
 }
 
+@keyframes modal_show {
+  0% {
+    transform translateY(800px);
+    opacity: 0;
+  }
+  100% {
+    transform translateY(0px);
+    opacity: 1;
+  }
+}
+
 /** LOADER **/
 
 .loader
@@ -142,6 +153,15 @@ header
 .gallery
   .gallery_display
     .img_container
+      
       &:hover
+        
         .img_actions
           display block
+          
+      .modal
+        opacity 0
+        animation-name modal_show
+        animation-delay 0s
+        animation-duration 0.4s
+        animation-fill-mode forwards

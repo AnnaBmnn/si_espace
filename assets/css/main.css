@@ -190,6 +190,13 @@ header {
 .gallery .gallery_display .img_container:hover .img_actions {
   display: block;
 }
+.gallery .gallery_display .img_container .modal {
+  opacity: 0;
+  animation-name: modal_show;
+  animation-delay: 0s;
+  animation-duration: 0.4s;
+  animation-fill-mode: forwards;
+}
 @-moz-keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -374,6 +381,46 @@ header {
     opacity: 1;
   }
 }
+@-moz-keyframes modal_show {
+  0% {
+    transform: translateY(800px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+@-webkit-keyframes modal_show {
+  0% {
+    transform: translateY(800px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+@-o-keyframes modal_show {
+  0% {
+    transform: translateY(800px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+@keyframes modal_show {
+  0% {
+    transform: translateY(800px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
 .gallery .gallery_display .img_actions {
   display: none;
   position: absolute;
@@ -421,14 +468,85 @@ header {
 .gallery .gallery_display .img_actions .img_plus {
   display: inline-block;
   position: absolute;
-  bottom: 144px;
-  left: 121px;
+  bottom: 20px;
+  left: 111px;
   text-align: center;
-  padding: 0 30px;
   color: #fefefe;
-  font-size: 30px;
+  font-size: 12px;
   font-weight: 500;
-  border: 2px solid #fefefe;
+}
+.gallery .gallery_display .modal {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  color: #fefefe;
+  padding: 100px 180px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.8);
+  transition: all 2s ease;
+}
+.gallery .gallery_display .modal .line_close {
+  position: fixed;
+  top: 115px;
+  right: 0;
+  width: 175px;
+  border-bottom: 2px solid #ff5f6d;
+}
+.gallery .gallery_display .modal .modal_close {
+  position: fixed;
+  top: 90px;
+  right: 180px;
+  font-family: 'Oxfam TSTAR PRO Headline';
+  font-size: 50px;
+  font-weight: 800;
+  color: #ff5f6d;
+  cursor: pointer;
+  transform: rotate(90deg);
+}
+.gallery .gallery_display .modal .modal_content {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.gallery .gallery_display .modal .modal_content .modal_img {
+  width: 100%;
+  max-width: 500px;
+  padding: 5px 5px 5px 10px;
+  border-left: 2px solid #ff5f6d;
+}
+.gallery .gallery_display .modal .modal_content .modal_infos {
+  width: 450px;
+  margin-left: 20px;
+}
+.gallery .gallery_display .modal .modal_content .modal_infos h3 {
+  font-family: 'Oxfam TSTAR PRO Headline';
+  font-size: 30px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+.gallery .gallery_display .modal .modal_content .modal_infos h3 em {
+  color: #ffc371;
+}
+.gallery .gallery_display .modal .modal_content .modal_infos li {
+  display: inline-block;
+  font-family: 'Roboto';
+  margin-bottom: 10px;
+}
+.gallery .gallery_display .modal .modal_content .modal_infos .add_button {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 5px 10px;
+  color: #ff5f6d;
+  font-size: 14px;
+  cursor: pointer;
+  border: 1px solid #ff5f6d;
+}
+.gallery .gallery_display .modal .modal_content .modal_infos .add_button:hover {
+  background-color: #ff5f6d;
+  color: #fefefe;
 }
 @import url("https://fonts.googleapis.com/css?family=Roboto");
 body {
@@ -486,6 +604,10 @@ header nav #home {
   font-family: 'Oxfam TSTAR PRO Headline';
   font-size: 22px;
   font-weight: 800;
+}
+header nav #home img {
+  height: 17px;
+  width: auto;
 }
 header nav a {
   text-decoration: none;
@@ -703,7 +825,21 @@ header nav div #gallery {
   width: 323px;
   height: 323px;
 }
-.gallery .gallery_display .img_container img {
+.gallery .gallery_display .img_container .img_img {
   width: 100%;
   height: 100%;
+}
+.gallery .add_popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 40%;
+  z-index: 10;
+  width: 250px;
+  padding: 10px 20px;
+  background-color: #ffc371;
+  text-align: center;
+  font-family: 'Oxfam TSTAR PRO Headline';
+  font-size: 14px;
+  color: #fefefe;
 }

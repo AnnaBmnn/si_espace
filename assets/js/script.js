@@ -3,7 +3,10 @@ window.addEventListener('load', function() {
     loader = document.querySelector('.loader'),
     header = document.querySelector('header'),
     content = document.querySelector('#content'),
-    back_top = document.querySelector('.back_top');
+    back_top = document.querySelector('.back_top'),
+    log_out = document.querySelectorAll('.log_out'),
+    gallery_display = document.querySelector('.gallery_display');
+    console.log(gallery_display);
     
     body.classList.remove('preload');
     loader.style.display = 'none';
@@ -49,18 +52,8 @@ function easeInOut(currentTime, start, change, duration) {
     currentTime -= 1;
     return -change / 2 * (currentTime * (currentTime - 2) - 1) + start;
 }
-    
-    
-    
-    
-    /*
+        
 
-  $('.back_top').click(function(){
-    $('body,html').animate({
-      scrollTop : 1600
-    }, 1000);
-  });*/
-  
 var image_container = document.querySelectorAll('.img_plus'),
     body = document.querySelector('body'),
     photo_liked = [];
@@ -70,12 +63,46 @@ for(var i=0; i<image_container.length; i++){
     }
 };
 
+var load = 1,
+    charged = false;
+
+        
+window.addEventListener('scroll', function(){
+   if(document.body.scrollTop== getScrollTopMax()){
+       load += 1;
+       charged = true;
+       if(charged){
+            !charged;
+            var httpRequest = new XMLHttpRequest;
+            httpRequest.onreadystatechange = function(){
+                if (httpRequest.readyState === 4) {// request is done
+                    if (httpRequest.status === 200) {// successfully
+                        add_img_load(httpRequest.responseText);     
+                    }
+                }
+            };
+    
+        httpRequest.open('POST', 'includes/upload_more_picture.php', true);
+        httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        httpRequest.send('load=' + load);
+        }
+    }           
+});
+
+getScrollTopMax = function () {
+  var ref;
+  return (ref = document.scrollingElement.scrollTopMax) != null
+      ? ref
+      : (document.scrollingElement.scrollHeight - document.documentElement.clientHeight);
+};
+
 
 for(var i=0; i<image_container.length; i++){
-    image_container[i].addEventListener('click',function(){
+    image_container[i].addEventListener('dblclick', function (){
         if(this.dataset.like == 'false'){
             photo_liked[photo_liked.length] = this.dataset.id;
             this.dataset.like = 'true';  
+            this.dataset.test = 'true';  
         }
         else {
             var j =0;
@@ -96,18 +123,18 @@ for(var i=0; i<image_container.length; i++){
 
 window.addEventListener('beforeunload', function(){
     var httpRequest = new XMLHttpRequest;
-        httpRequest.onreadystatechange = function(){
-            if (httpRequest.readyState === 4) {// request is done
-                if (httpRequest.status === 200) {// successfully
-                    callback(httpRequest.responseText);// we're calling our method
-                }
+    httpRequest.onreadystatechange = function(){
+        if (httpRequest.readyState === 4) {// request is done
+            if (httpRequest.status === 200) {// successfully
+                callback(httpRequest.responseText);// we're calling our method
             }
-        };
+        }
+    };
     
-        httpRequest.open('POST', 'includes/add_user_galery.php', true);
-        httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        var data = create_data_string(photo_liked);
-        httpRequest.send(data);
+    httpRequest.open('POST', 'includes/add_user_galery.php', true);
+    httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    var data = create_data_string(photo_liked);
+    httpRequest.send(data);
 });
 
 
@@ -125,7 +152,71 @@ function create_data_string(tab){
     }
     return data_string ;
 }
+
+function add_img_load(data){
+    var img_add =  JSON.parse(data),
+        gallery_display = document.querySelector('.gallery_display');
+    for( var i=0; i<img_add.length; i++ ){
+        var img_container_create = document.createElement('div');
+        img_container_create.classList.add('img_container');
+        var img_actions_create = document.createElement('div');
+        img_actions_create.classList.add('img_actions');
+        img_container_create.appendChild(img_actions_create);
+        var corner_top_left = document.createElement('div');
+        corner_top_left.classList.add('corner_top_left');
+        img_actions_create.appendChild(corner_top_left);
+        var corner_top_right = document.createElement('div');
+        corner_top_right.classList.add('corner_top_right');
+        img_actions_create.appendChild(corner_top_right);
+        var corner_bottom_left = document.createElement('div');
+        corner_bottom_left.classList.add('corner_bottom_left');
+        img_actions_create.appendChild(corner_bottom_left);
+        var corner_bottom_right = document.createElement('div');
+        corner_bottom_right.classList.add('corner_bottom_right');
+        img_actions_create.appendChild(corner_bottom_right); 
+        var img_plus_create = document.createElement('div');
+        img_plus_create.classList.add('img_plus');
+        img_plus_create.dataset.id =img_add[i].id ;
+        img_plus_create.dataset.like =img_add[i].like ;
+        img_plus_create.innerHTML ='+' ;
+        
+        img_actions_create.appendChild(img_plus_create);
+        img_container_create.appendChild(img_actions_create);
+        
+        var img_create = document.createElement('img');
+        img_create.src = img_add[i].url;
+        img_container_create.appendChild(img_create);
+        gallery_display.appendChild(img_container_create);
+        
+        img_plus_create.addEventListener('dblclick', function (){
+            if(this.dataset.like == 'false'){
+                photo_liked[photo_liked.length] = this.dataset.id;
+                this.dataset.like = 'true';  
+                this.dataset.test = 'true';  
+            }
+            else {
+                var j =0;
+                this.dataset.like = 'false';
+                while( j < photo_liked.length ){
+                    if(photo_liked[j]== this.dataset.id){
+                        photo_liked.splice(j,1);
+                        j = photo_liked.length+1;
+                    }
+                    else {
+                        j++ ;
+                    }
+                }
+            }
+            console.log(photo_liked);
+        });
+        
+    }
+}    
+    
+    
     
    
 });
+
+
 

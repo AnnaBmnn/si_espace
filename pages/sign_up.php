@@ -20,7 +20,7 @@
   
   <header class="no_animations">
     <nav>
-      <a href="../index.php" target="_self" title="Home" id="home">ROVER'S EYES</a>
+      <a href="../index.php" target="_self" title="Home" id="home">R<img src="../assets/img/logo_mars.png" alt="Logo">VER'S EYES</a>
       <div class="nav_links">
         <a href="../index.php#gallery_anchor" title="Gallery" id="gallery">GALLERY</a>
         <a href="sign_up.php" title="SignUp">SUBSCRIBE</a>
