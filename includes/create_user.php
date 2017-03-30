@@ -34,7 +34,7 @@
             header('Location: ../index.php'); 
             
         } else {
-            echo 'le nom existe déjà';
+            echo '<div class="form_popup">USERNAME ALREADY TAKEN</div>';
         }
         
     }

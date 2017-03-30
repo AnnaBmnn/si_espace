@@ -17,6 +17,12 @@
   <head>
     <meta charset="UTF-8">
     <title>Rover's Eyes</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="assets/img/favicons/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="assets/img/favicons/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="assets/img/favicons/manifest.json">
+  <link rel="mask-icon" href="assets/img/favicons/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="assets/css/main.css">
@@ -140,12 +146,13 @@
           }
           ?>
           <div class="img_container">
+
             <div class="img_actions">
               <div class="corner_top_left"></div>
               <div class="corner_top_right"></div>
               <div class="corner_bottom_right"></div>
               <div class="corner_bottom_left"></div>
-              <div class="img_plus">CLICK FOR<br>MORE INFORMATIONS</div>
+              <div class="img_plus ">CLICK FOR<br>MORE INFORMATIONS</div>
             </div>
             <img src="<?= $_photo->url ?>" class="img_img"/>
             <div class="modal">
@@ -166,7 +173,13 @@
                     <li>Weather Status : N/A</li>
                   </ul>
 
-                  <div class="add_button" data-id="<?= $_photo->id ?>" data-like="<?=array_key_exists('user', $_SESSION)? empty($photo_liked)?'false':'true':'false' ?>">+ ADD TO YOUR COLLECTION</div>
+                  <div class="add_button add_collection" data-id="<?= $_photo->id ?>" data-like="<?=array_key_exists('user', $_SESSION)? empty($photo_liked)?'false':'true':'false' ?>">
+                  <?=array_key_exists('user', $_SESSION)? empty($photo_liked)?'+ ADD TO YOUR COLLECTION':'- DELETE FROM YOUR COLLECTION':'' ?>
+                  <a href="pages/sign_up.php">
+                    <?=array_key_exists('user', $_SESSION)?'' :'SUBSCRIBE TO SAVE PICTURE' ?>
+                  </a>
+                  </div>
+                  <a class="twitter" href="https://twitter.com/intent/tweet?text=Rover's Eyes Photo n°<?= $_photo->id ?> <?= $_photo->url ?>" target="_blank"><img src="assets/img/twitter.png" alt="twitter">Tweet</a>
                 </div>
               </div>
             </div>

@@ -54,12 +54,12 @@ function easeInOut(currentTime, start, change, duration) {
 }
         
 
-var image_container = document.querySelectorAll('.img_plus'),
+var add_collection = document.querySelectorAll('.add_collection'),
     body = document.querySelector('body'),
     photo_liked = [];
-for(var i=0; i<image_container.length; i++){
-    if(image_container[i].dataset.like == 'true'){
-        photo_liked[photo_liked.length] = image_container[i].dataset.id;
+for(var i=0; i<add_collection.length; i++){
+    if(add_collection[i].dataset.like == 'true'){
+        photo_liked[photo_liked.length] = add_collection[i].dataset.id;
     }
 };
 
@@ -97,8 +97,9 @@ getScrollTopMax = function () {
 };
 
 
-for(var i=0; i<image_container.length; i++){
-    image_container[i].addEventListener('dblclick', function (){
+for(var i=0; i<add_collection.length; i++){
+    add_collection[i].addEventListener('click', function (){
+		console.log('ok');
         if(this.dataset.like == 'false'){
             photo_liked[photo_liked.length] = this.dataset.id;
             this.dataset.like = 'true';  
@@ -159,9 +160,18 @@ function add_img_load(data){
     for( var i=0; i<img_add.length; i++ ){
         var img_container_create = document.createElement('div');
         img_container_create.classList.add('img_container');
+		//create img_action 
         var img_actions_create = document.createElement('div');
         img_actions_create.classList.add('img_actions');
         img_container_create.appendChild(img_actions_create);
+        var img_plus_create = document.createElement('div');
+        img_plus_create.classList.add('img_plus');
+        img_plus_create.classList.add('add_collection');
+        img_plus_create.dataset.id =img_add[i].id ;
+        img_plus_create.dataset.like =img_add[i].like ;
+        img_plus_create.innerHTML ='CLICK FOR \<br\> MORE INFORMATIONS' ;
+        
+        img_actions_create.appendChild(img_plus_create);
         var corner_top_left = document.createElement('div');
         corner_top_left.classList.add('corner_top_left');
         img_actions_create.appendChild(corner_top_left);
@@ -174,21 +184,102 @@ function add_img_load(data){
         var corner_bottom_right = document.createElement('div');
         corner_bottom_right.classList.add('corner_bottom_right');
         img_actions_create.appendChild(corner_bottom_right); 
-        var img_plus_create = document.createElement('div');
-        img_plus_create.classList.add('img_plus');
-        img_plus_create.dataset.id =img_add[i].id ;
-        img_plus_create.dataset.like =img_add[i].like ;
-        img_plus_create.innerHTML ='+' ;
         
-        img_actions_create.appendChild(img_plus_create);
         img_container_create.appendChild(img_actions_create);
         
         var img_create = document.createElement('img');
         img_create.src = img_add[i].url;
+        img_create.classList.add('img_img');
         img_container_create.appendChild(img_create);
         gallery_display.appendChild(img_container_create);
+    
+        var modal = document.createElement('div');
+        modal.classList.add('modal');
+        img_container_create.appendChild(modal);
+      
+        var line_close = document.createElement('div');
+        line_close.classList.add('line_close');
+        modal.appendChild(line_close);
+      
+        var modal_close = document.createElement('div');
+        modal_close.classList.add('modal_close');
+        modal_close.innerHTML = '>';
+        modal.appendChild(modal_close);
+      
+        var modal_content = document.createElement('div');
+        modal_content.classList.add('modal_content');
+        modal.appendChild(modal_content);
+      
+        var img_modal = document.createElement('img');
+        img_modal.classList.add('modal_img');
+        img_modal.src= img_add[i].url;
+        modal_content.appendChild(img_modal);
+      
+        var modal_infos = document.createElement('div');
+        modal_infos.classList.add('modal_infos');
+        modal_content.appendChild(modal_infos);
         
-        img_plus_create.addEventListener('dblclick', function (){
+        var h3 = document.createElement('h3');
+        h3.innerHTML = 'PHOTO \<em> #'+img_add[i].id +'\</em>';
+        modal_infos.appendChild(h3);
+    
+        var ul = document.createElement('ul');
+        modal_infos.appendChild(ul);
+      
+        var li = document.createElement('li');
+        li.innerHTML = 'Date : '+img_add[i].date ;
+        ul.appendChild(li);
+      
+        var li2 = document.createElement('li2');
+        li2.innerHTML = 'Camera : '+img_add[i].camera ;
+        ul.appendChild(li2);
+      
+        var li2 = document.createElement('li2');
+        li2.innerHTML = 'Camera : '+img_add[i].camera ;
+        ul.appendChild(li2);
+      
+        var add_button = document.createElement('div');
+        add_button.classList.add('add_button');
+        add_button.classList.add('add_collection');
+        add_button.dataset.id =img_add[i].id ;
+        add_button.dataset.like =img_add[i].like ;
+        modal_infos.appendChild(add_button);
+      
+        if(img_add[i].session == 'true'){
+          if(img_add[i].like == 'false'){
+            add_button.innerHTML = '+ ADD TO YOUR COLLECTION';
+          }else{
+            add_button.innerHTML = '- DELETE FROM YOUR COLLECTION';
+          }
+        }else{
+          var a = document.createElement('a');
+          a.href = 'pages/sign_up.php';
+          a.innerHTML = 'SUBSCRIBE TO SAVE PICTURE';
+          add_button.appendChild(a);
+        }
+      
+          var a_twitter = document.createElement('a');
+          a_twitter.href = 'pages/sign_up.php';
+          a_twitter.classList.add( 'twitter');
+          a_twitter.innerHTML = 'https://twitter.com/intent/tweet?text=Rover\'s Eyes Photo n°'+img_add[i].id+' '+img_add[i].url;
+          modal_infos.appendChild(a_twitter);
+          a_twitter.innerHTML = 'TWEET';
+      
+          var img_twitter = document.createElement('img');
+          img_twitter.src = 'assets/img/twitter.png';
+          a_twitter.appendChild(img_twitter);
+      
+        modal_close.addEventListener('click', function(){
+          this.parentNode.style.display = 'none';
+        });
+      
+        img_actions_create.addEventListener('click', function(){
+          var next = this.nextElementSibling;
+          var cible = next.nextElementSibling;
+          cible.style.display = 'block';
+        });
+        
+        add_button.addEventListener('click', function (){
             if(this.dataset.like == 'false'){
                 photo_liked[photo_liked.length] = this.dataset.id;
                 this.dataset.like = 'true';  
@@ -207,16 +298,36 @@ function add_img_load(data){
                     }
                 }
             }
-            console.log(photo_liked);
         });
         
     }
 }    
     
-    
-    
-   
+
+  var img_actions =document.querySelectorAll('.img_actions');
+  var modal =document.querySelectorAll('.modal');
+  var add_button =document.querySelectorAll('.add_button');
+  console.log(modal);
+
+  for(var i=0; i<img_actions.length;i++){
+    img_actions[i].addEventListener('click', function(){
+      var next = this.nextElementSibling;
+      var cible = next.nextElementSibling;
+      cible.style.display = 'block';
+    });
+  }
+  
+  var modal_close =document.querySelectorAll('.modal_close');
+  for(var j=0; j<modal_close.length;j++){
+    modal_close[j].addEventListener('click', function(){
+      this.parentNode.style.display = 'none';
+    });
+  }
+
+      
 });
+
+
 
 
 

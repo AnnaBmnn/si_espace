@@ -8,7 +8,7 @@
 
     // Éxécution de la requête et récupération des données
     $photos_load = $query->fetchAll();
-
+    
 
 /*
 $query_galery = $pdo->query('SELECT id_rover FROM galery_aa WHERE id_rover>'.$min_id.' AND id_rover<'.$max_id);
@@ -16,7 +16,9 @@ $query_galery = $pdo->query('SELECT id_rover FROM galery_aa WHERE id_rover>'.$mi
 // Éxécution de la requête et récupération des données
         $photo_liked = $query_galery->fetch();
     echo json_encode($photo_liked);*/
-
+    foreach($photos_load as $_photo){
+      $_photo->session = 'false';
+    }
     if(array_key_exists('user', $_SESSION)){
         $query_galery = $pdo->query('SELECT * FROM galery_'.$_SESSION['user'].' WHERE id_rover>'.$min_id.' AND id_rover<'.$max_id);
 
@@ -28,8 +30,9 @@ $query_galery = $pdo->query('SELECT id_rover FROM galery_aa WHERE id_rover>'.$mi
                 if($_photo->id == $_photo_liked->id_rover){
                     $_photo->like = 'true';
                 }
+              
             }
-        
+          $_photo->session = 'true';
         }
         
     }

@@ -10,6 +10,19 @@
   src: url("../fonts/OxfamTSTARPRO-Headline.eot?#iefix") format('embedded-opentype'), url("../fonts/OxfamTSTARPRO-Headline.woff2") format('woff2'), url("../fonts/OxfamTSTARPRO-Headline.woff") format('woff'), url("../fonts/OxfamTSTARPRO-Headline.ttf") format('truetype'), url("../fonts/OxfamTSTARPRO-Headline.svg#OxfamTSTARPRO-Medium") format('svg');
   font-style: normal;
 }
+.form_popup {
+  position: fixed;
+  bottom: 0;
+  left: 40%;
+  z-index: 10;
+  width: 250px;
+  padding: 10px 20px;
+  background-color: #ff5f6d;
+  text-align: center;
+  font-family: 'Oxfam TSTAR PRO Headline';
+  font-size: 14px;
+  color: #fefefe;
+}
 .login-box {
   display: flex;
   justify-content: space-around;
@@ -531,11 +544,11 @@ header {
   color: #ffc371;
 }
 .gallery .gallery_display .modal .modal_content .modal_infos li {
-  display: inline-block;
   font-family: 'Roboto';
   margin-bottom: 10px;
 }
 .gallery .gallery_display .modal .modal_content .modal_infos .add_button {
+  display: inherit;
   display: inline-block;
   margin-top: 30px;
   padding: 5px 10px;
@@ -547,6 +560,25 @@ header {
 .gallery .gallery_display .modal .modal_content .modal_infos .add_button:hover {
   background-color: #ff5f6d;
   color: #fefefe;
+}
+.gallery .gallery_display .modal .modal_content .modal_infos .twitter {
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 30px;
+  padding: 5px 10px;
+  color: #fefefe;
+  font-family: Arial;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  background-color: #4099ff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.gallery .gallery_display .modal .modal_content .modal_infos .twitter img {
+  height: 12px;
+  width: auto;
+  margin-right: 5px;
 }
 @import url("https://fonts.googleapis.com/css?family=Roboto");
 body {
