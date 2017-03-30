@@ -84,7 +84,7 @@ window.addEventListener('scroll', function(){
     
         httpRequest.open('POST', 'includes/upload_more_picture.php', true);
         httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        httpRequest.send('load=' + load);
+        httpRequest.send('load=' + load );
         }
     }           
 });
@@ -132,7 +132,7 @@ window.addEventListener('beforeunload', function(){
         }
     };
     
-    httpRequest.open('POST', 'includes/add_user_galery.php', true);
+    httpRequest.open('POST', './includes/add_user_galery.php', true);
     httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     var data = create_data_string(photo_liked);
     httpRequest.send(data);
@@ -229,10 +229,6 @@ function add_img_load(data){
         var li = document.createElement('li');
         li.innerHTML = 'Date : '+img_add[i].date ;
         ul.appendChild(li);
-      
-        var li2 = document.createElement('li2');
-        li2.innerHTML = 'Camera : '+img_add[i].camera ;
-        ul.appendChild(li2);
       
         var li2 = document.createElement('li2');
         li2.innerHTML = 'Camera : '+img_add[i].camera ;

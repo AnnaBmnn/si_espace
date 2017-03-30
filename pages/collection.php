@@ -1,8 +1,8 @@
 <?php
-
   session_start();
   include '../includes/config.php';
   include '../includes/log_out.php';
+  include '../includes/delete_photo_liked.php';
 
   // Préparation de la requête
   $query = $pdo->query('SELECT * FROM galery_'.$_SESSION['user']);
@@ -47,26 +47,56 @@
     <div class="gallery">
       <div class="gallery_title"><h2>COLLECTION</h2></div>
       <div class="gallery_display">
-        <?php foreach($photos_display as $_photo): ?>
-            <?php
-                if(array_key_exists('user', $_SESSION)){
-                    $query_galery = $pdo->query('SELECT id_rover FROM galery_'.$_SESSION['user'].' WHERE id_rover='.$_photo->id);
+          <?php foreach($photos_display as $_photo): ?>
+          <?php
+          if(array_key_exists('user', $_SESSION)){
+            $query_galery = $pdo->query('SELECT id_rover FROM galery_'.$_SESSION['user'].' WHERE id_rover='.$_photo->id);
 
-    // Éxécution de la requête et récupération des données
-                    $photo_liked = $query_galery->fetch();
-                }
-            ?>
-            <div class="img_container">
-              <div class="img_actions">
-                <div class="corner_top_left"></div>
-                <div class="corner_top_right"></div>
-                <div class="corner_bottom_right"></div>
-                <div class="corner_bottom_left"></div>
-                <div class="img_plus">CLICK FOR<br>MORE INFORMATIONS</div>
+            // Éxécution de la requête et récupération des données
+            $photo_liked = $query_galery->fetch();
+          }
+          ?>
+          <div class="img_container">
+
+            <div class="img_actions">
+              <div class="corner_top_left"></div>
+              <div class="corner_top_right"></div>
+              <div class="corner_bottom_right"></div>
+              <div class="corner_bottom_left"></div>
+              <div class="img_plus ">CLICK FOR<br>MORE INFORMATIONS</div>
+            </div>
+            <img src="<?= $_photo->url ?>" class="img_img"/>
+            <div class="modal">
+              <div class="line_close"></div> 
+              <span class="modal_close">></span>
+              <div class="modal_content">
+                <img class="modal_img" src="<?= $_photo->url ?>">
+                <div class="modal_infos">
+                  <h3>PHOTO <em>#<?= $_photo->id ?></em></h3>
+                  <ul>
+                    <li>Date : <?= $_photo->date ?></li>
+                    <li>Camera : <?= $_photo->camera ?></li>
+                    <li>Min Temperature : N/A</li>
+                    <li>Max Temperature : N/A</li>
+                    <li>Atmospheric Pressure : N/A</li>
+                    <li>Humidity : N/A</li>
+                    <li>Wind Direction : N/A</li>
+                    <li>Weather Status : N/A</li>
+                  </ul>
+
+                  <div class="add_button add_collection" data-id="<?= $_photo->id ?>" data-like="true">
+                    
+                    <a href="?delete=<?= $_photo->id ?>">- DELETE FROM YOUR COLLECTION</a>
+                  </div>
+                  <a class="twitter" href="https://twitter.com/intent/tweet?text=Rover's Eyes Photo n°<?= $_photo->id ?> <?= $_photo->url ?>" target="_blank"><img src="../assets/img/twitter.png" alt="twitter">Tweet</a>
+                </div>
               </div>
-              <img src="<?= $_photo->url ?>" class="img_img" />
-            </div>     
-        <?php endforeach; ?>
+            </div>
+          </div>
+
+          <?php endforeach; ?>
+        </div>
+      </div>
       </div>
     </div>
     
