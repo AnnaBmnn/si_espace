@@ -25,6 +25,22 @@
   <body class="accueil">
 
     <div class="loader"></div>
+    
+    <div class="dropdown">
+      <button class="dropbtn">MENU</button>
+      <div class="dropdown_menu">
+        <a href="#gallery_anchor" title="Gallery" id="gallery">GALLERY</a>
+        <?php 
+          if(!array_key_exists('user', $_SESSION)){
+            echo '<a href="pages/sign_up.php" title="SignUp">SUBSCRIBE</a>';
+            echo '<a href="pages/sign_in.php" title="SignIn">LOGIN</a>';
+          }else {
+            echo '<a href="pages/collection.php" title="Collection">MY COLLECTION</a>';
+            echo '<a href="index.php?log_out=true" title="LogOut" class="log_out">LOGOUT</a>';
+          }
+        ?>   
+      </div>
+    </div>
 
     <header class="preload">
       <nav>
