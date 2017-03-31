@@ -36,8 +36,8 @@
     <nav>
       <a href="../index.php" target="_self" title="Home" id="home">R<img src="../assets/img/logo_mars.png" alt="Logo">VER'S EYES</a>
       <div class="nav_links">
-        <a href="../index.php#gallery_anchor" title="Gallery" id="gallery">GALLERY</a>
-        <a href="#" class="target" title="My Collection">MY COLLECTION</a>
+        <a href="../index.php#gallery_anchor" title="Gallery">GALLERY</a>
+        <a href="#" class="target active" title="My Collection">MY COLLECTION</a>
         <a href="../index.php?log_out=true" title="Log out" class="log_out">LOG OUT</a>
       </div>
     </nav>

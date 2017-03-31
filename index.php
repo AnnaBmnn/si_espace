@@ -47,7 +47,7 @@ include 'includes/delete_photo_liked.php';
       <nav>
         <a href="index.php" target="_self" title="Home" id="home">R<img src="assets/img/logo_mars.png" alt="Logo">VER'S EYES</a>
         <div class="nav_links">
-          <a href="#gallery_anchor" title="Gallery" id="gallery" class="target">GALLERY</a>
+          <a href="#gallery_anchor" title="Gallery" class="active" class="target">GALLERY</a>
           <?php 
           if(!array_key_exists('user', $_SESSION)){
             echo '<a href="pages/sign_up.php" title="SignUp">SUBSCRIBE</a>';
