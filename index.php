@@ -22,7 +22,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/main.css">
   </head>
 
-  <body>
+  <body class="accueil">
 
     <div class="loader"></div>
 
@@ -30,7 +30,7 @@
       <nav>
         <a href="index.php" target="_self" title="Home" id="home">R<img src="assets/img/logo_mars.png" alt="Logo">VER'S EYES</a>
         <div class="nav_links">
-          <a href="#gallery_anchor" title="Gallery" id="gallery">GALLERY</a>
+          <a href="#gallery_anchor" title="Gallery" id="gallery" class="target">GALLERY</a>
           <?php 
               if(!array_key_exists('user', $_SESSION)){
                   echo '<a href="pages/sign_up.php" title="SignUp">SUBSCRIBE</a>';
@@ -130,8 +130,10 @@
       <div class="gallery" id="gallery_anchor">
         <div class="gallery_title"><h2>PHOTOS GALLERY</h2></div>
         <div class="gallery_display">
+          
         </div>
-        <div class="add_popup">PHOTO ADDED TO YOUR COLLECTION</div>
+        <div class="add_popup"><a href="pages/collection.php" alt="aller voir ma collection de photo de mars">PHOTO ADDED TO YOUR COLLECTION</a></div>
+
       </div>
     </div>
 
@@ -139,7 +141,6 @@
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="assets/js/script.min.js"></script>
-    <script src="assets/js/modal.js"></script>
 
   </body>
 </html>

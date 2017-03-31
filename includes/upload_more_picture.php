@@ -4,7 +4,7 @@
     $min_id = $_POST['load']*60;
     $max_id = ($_POST['load']+1)*60+1;
 
-    $query = $pdo->query('SELECT * FROM rover_photo ORDER BY score DESC LIMIT '.$min_id.','.$max_id);
+    $query = $pdo->query('SELECT * FROM rover_photo ORDER BY id DESC LIMIT '.$min_id.','.$max_id);
 
     // Éxécution de la requête et récupération des données
     $photos_load = $query->fetchAll();

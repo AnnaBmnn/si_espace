@@ -548,7 +548,6 @@ header {
   margin-bottom: 10px;
 }
 .gallery .gallery_display .modal .modal_content .modal_infos .add_button {
-  display: inherit;
   display: inline-block;
   margin-top: 30px;
   padding: 5px 10px;
@@ -557,14 +556,17 @@ header {
   cursor: pointer;
   border: 1px solid #ff5f6d;
 }
+.gallery .gallery_display .modal .modal_content .modal_infos .add_button a {
+  text-decoration: none;
+}
 .gallery .gallery_display .modal .modal_content .modal_infos .add_button:hover {
   background-color: #ff5f6d;
   color: #fefefe;
 }
 .gallery .gallery_display .modal .modal_content .modal_infos .twitter {
   text-decoration: none;
-  display: inline-block;
   margin-top: 30px;
+  margin-left: 30px;
   padding: 5px 10px;
   color: #fefefe;
   font-family: Arial;
@@ -578,7 +580,7 @@ header {
 .gallery .gallery_display .modal .modal_content .modal_infos .twitter img {
   height: 12px;
   width: auto;
-  margin-right: 5px;
+  margin-left: 5px;
 }
 @import url("https://fonts.googleapis.com/css?family=Roboto");
 body {
@@ -657,7 +659,7 @@ header nav div {
 header nav div a {
   margin-left: 30px;
 }
-header nav div #gallery {
+header nav div .target {
   color: #ff5f6d;
   font-weight: 800;
 }

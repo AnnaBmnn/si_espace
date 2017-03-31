@@ -37,7 +37,7 @@
       <a href="../index.php" target="_self" title="Home" id="home">R<img src="../assets/img/logo_mars.png" alt="Logo">VER'S EYES</a>
       <div class="nav_links">
         <a href="../index.php#gallery_anchor" title="Gallery" id="gallery">GALLERY</a>
-        <a href="#" title="My Collection">MY COLLECTION</a>
+        <a href="#" class="target" title="My Collection">MY COLLECTION</a>
         <a href="../index.php?log_out=true" title="Log out" class="log_out">LOG OUT</a>
       </div>
     </nav>
@@ -72,21 +72,16 @@
               <div class="modal_content">
                 <img class="modal_img" src="<?= $_photo->url ?>">
                 <div class="modal_infos">
-                  <h3>PHOTO <em>#<?= $_photo->id ?></em></h3>
+                  <h3>PHOTO <em>#<?= $_photo->id_rover ?></em></h3>
                   <ul>
-                    <li>Date : <?= $_photo->date ?></li>
+                    <li>Date : <?= $_photo->date_img ?></li>
+                    <li>Sol : <?= $_photo->sol ?></li>
                     <li>Camera : <?= $_photo->camera ?></li>
-                    <li>Min Temperature : N/A</li>
-                    <li>Max Temperature : N/A</li>
-                    <li>Atmospheric Pressure : N/A</li>
-                    <li>Humidity : N/A</li>
-                    <li>Wind Direction : N/A</li>
-                    <li>Weather Status : N/A</li>
                   </ul>
 
                   <div class="add_button add_collection" data-id="<?= $_photo->id ?>" data-like="true">
                     
-                    <a href="?delete=<?= $_photo->id ?>">- DELETE FROM YOUR COLLECTION</a>
+                    <a href="?delete=<?= $_photo->id_rover ?>">- DELETE FROM YOUR COLLECTION</a>
                   </div>
                   <a class="twitter" href="https://twitter.com/intent/tweet?text=Rover's Eyes Photo n°<?= $_photo->id ?> <?= $_photo->url ?>" target="_blank"><img src="../assets/img/twitter.png" alt="twitter">Tweet</a>
                 </div>

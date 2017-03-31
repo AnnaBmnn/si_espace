@@ -1,9 +1,9 @@
 <?php 
     session_start();
     include 'config.php';
-    
+    /*
     $prepare_delete = $pdo->query('DELETE FROM galery_'.$_SESSION['user']);
-    $prepare_delete->execute();
+    $prepare_delete->execute();*/
 
     foreach($_POST as $_id){  
             $query = $pdo->query('SELECT * FROM rover_photo WHERE id='.$_id);
