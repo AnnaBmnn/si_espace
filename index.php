@@ -26,7 +26,7 @@
 
     <div class="loader"></div>
     
-    <div class="dropdown">
+    <div class="dropdown" data-toggle="false">
       <button class="dropbtn">MENU</button>
       <div class="dropdown_menu">
         <a href="#gallery_anchor" title="Gallery" id="gallery">GALLERY</a>

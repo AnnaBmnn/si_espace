@@ -10,7 +10,7 @@ gulp.task( 'css', function()
 {
   gulp.src( './assets/stylus/main.styl' ) // main.styl as input
     .pipe( gulp_plumber() ) 
-    .pipe( gulp_stylus() )             // Convert to CSS
+    .pipe( gulp_stylus({compress:true}) )             // Convert to CSS
     .pipe( gulp.dest( './assets/css' ) ); // Put it in CSS folder
 } );
 
