@@ -41,7 +41,7 @@ Create a website using APIs.
 
 [Mars Rover Photo](https://api.nasa.gov/api.html#MarsPhotos)
 
-### Authors
+## Authors
 
 * Anna BAUMANN
 * Vanessa GIMBERT
