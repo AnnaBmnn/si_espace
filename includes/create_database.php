@@ -4,20 +4,15 @@
 
     $date_begining = date('h:i:s');
     $request = 0;
+    //get the requete for sol = 0 in order to get the max sol
     $photos = get_request($request);            //request to the api with sol = $request
     $photos = $photos->photos;
-
     $max_sol = $photos[0]->rover->max_sol;
 
     foreach($photos as $_photo){ 
         insert_data_base($_photo);
     }
- 
     $request +=1;
-    echo '<pre>';
-    print_r($request);
-    echo '</pre>';
-    
     while($request<= $max_sol){
 
         if($request%1000==0 && date_difference($date_begining)<60){     //check the limitation request
@@ -26,6 +21,7 @@
         }
         else {
             $photos = get_request($request);
+            //test if there is picture for this date or not
             if(!array_key_exists('errors', $photos)){
                 $photos = $photos->photos;
                 foreach($photos as $_photo){ 
@@ -34,6 +30,7 @@
                 $request +=1;
             } 
             else {
+                //if no info this day go to the next sol 
                 $request +=1;
             }
         }
@@ -50,6 +47,7 @@
         return $interval;
     }
 
+//get the informtion from the API
 function get_request($sol){
     // Instantiate curl
     $curl = curl_init();
@@ -64,6 +62,7 @@ function get_request($sol){
 
 }
 
+//insert new picture in the data base
 function insert_data_base($photo){
     $sol = $photo->sol;
     $date = $photo->earth_date;

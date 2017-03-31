@@ -46,10 +46,11 @@
         border-left 2px solid $white
         
       .img_plus
+        width 150px
         display inline-block
         position absolute
         bottom 20px
-        left 111px
+        left "calc(50% - %s)" % (@width/2)
         text-align center
         color $white
         font-size 12px

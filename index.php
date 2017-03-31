@@ -1,9 +1,9 @@
 <?php
 
-  session_start();
-  include 'includes/config.php';
-  include 'includes/log_out.php';
-  include 'includes/delete_photo_liked.php';
+session_start();
+include 'includes/config.php';
+include 'includes/log_out.php';
+include 'includes/delete_photo_liked.php';
 ?>
 
 <!DOCTYPE html>
@@ -11,12 +11,13 @@
   <head>
     <meta charset="UTF-8">
     <title>Rover's Eyes</title>
+    <!-- fav icon -->
     <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicons/apple-touch-icon.png">
-  <link rel="icon" type="image/png" href="assets/img/favicons/favicon-32x32.png" sizes="32x32">
-  <link rel="icon" type="image/png" href="assets/img/favicons/favicon-16x16.png" sizes="16x16">
-  <link rel="manifest" href="assets/img/favicons/manifest.json">
-  <link rel="mask-icon" href="assets/img/favicons/safari-pinned-tab.svg" color="#5bbad5">
-  <meta name="theme-color" content="#ffffff">
+    <link rel="icon" type="image/png" href="assets/img/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="assets/img/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="assets/img/favicons/manifest.json">
+    <link rel="mask-icon" href="assets/img/favicons/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="theme-color" content="#ffffff">
     <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="assets/css/main.css">
@@ -25,19 +26,19 @@
   <body class="accueil">
 
     <div class="loader"></div>
-    
+
     <div class="dropdown" data-toggle="false">
       <button class="dropbtn">MENU</button>
       <div class="dropdown_menu">
         <a href="#gallery_anchor" title="Gallery" id="gallery">GALLERY</a>
         <?php 
-          if(!array_key_exists('user', $_SESSION)){
-            echo '<a href="pages/sign_up.php" title="SignUp">SUBSCRIBE</a>';
-            echo '<a href="pages/sign_in.php" title="SignIn">LOGIN</a>';
-          }else {
-            echo '<a href="pages/collection.php" title="Collection">MY COLLECTION</a>';
-            echo '<a href="index.php?log_out=true" title="LogOut" class="log_out">LOGOUT</a>';
-          }
+        if(!array_key_exists('user', $_SESSION)){
+          echo '<a href="pages/sign_up.php" title="SignUp">SUBSCRIBE</a>';
+          echo '<a href="pages/sign_in.php" title="SignIn">LOGIN</a>';
+        }else {
+          echo '<a href="pages/collection.php" title="Collection">MY COLLECTION</a>';
+          echo '<a href="index.php?log_out=true" title="LogOut" class="log_out">LOGOUT</a>';
+        }
         ?>   
       </div>
     </div>
@@ -48,13 +49,13 @@
         <div class="nav_links">
           <a href="#gallery_anchor" title="Gallery" id="gallery" class="target">GALLERY</a>
           <?php 
-              if(!array_key_exists('user', $_SESSION)){
-                  echo '<a href="pages/sign_up.php" title="SignUp">SUBSCRIBE</a>';
-                  echo '<a href="pages/sign_in.php" title="SignIn">LOGIN</a>';
-              }else {
-                  echo '<a href="pages/collection.php" title="galery">MY COLLECTION</a>';
-                  echo '<a href="index.php?log_out=true" title="Log out" class="log_out">LOG OUT</a>';
-              }
+          if(!array_key_exists('user', $_SESSION)){
+            echo '<a href="pages/sign_up.php" title="SignUp">SUBSCRIBE</a>';
+            echo '<a href="pages/sign_in.php" title="SignIn">LOGIN</a>';
+          }else {
+            echo '<a href="pages/collection.php" title="galery">MY COLLECTION</a>';
+            echo '<a href="index.php?log_out=true" title="Log out" class="log_out">LOG OUT</a>';
+          }
 
           ?>    
         </div>
@@ -146,7 +147,7 @@
       <div class="gallery" id="gallery_anchor">
         <div class="gallery_title"><h2>PHOTOS GALLERY</h2></div>
         <div class="gallery_display">
-          
+
         </div>
         <div class="add_popup"><a href="pages/collection.php" alt="aller voir ma collection de photo de mars">PHOTO ADDED TO YOUR COLLECTION</a></div>
 

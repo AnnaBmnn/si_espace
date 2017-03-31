@@ -6,7 +6,12 @@ window.addEventListener('load', function() {
       back_top = document.querySelector('.back_top'),
       log_out = document.querySelectorAll('.log_out'),
       accueil = document.querySelector('.accueil'),
-      gallery_display = document.querySelector('.gallery_display');
+      gallery_display = document.querySelector('.gallery_display'),
+      add_collection = document.querySelectorAll('.add_collection'),
+      body = document.querySelector('body'),
+      load = 1,
+      charged = false,
+      photo_liked = [];
 
   body.classList.remove('preload');
   loader.style.display = 'none';
@@ -14,17 +19,18 @@ window.addEventListener('load', function() {
   content.classList.remove('preload');
 
   window.addEventListener('scroll', function(){
+    //toggle the back to top button
     if (document.body.scrollTop >= 1800){
       back_top.style.display = 'inherit';
     }else{
       back_top.style.display = 'none';
     }
   });
-
+  //come back to the top
   back_top.addEventListener('click',function(){
     scrollTo(document.body, 0, 1000);
   });
-
+  //animation for the back to top button
   function scrollTo(element, to, duration) {
     var start = element.scrollTop,
         change = to - start,
@@ -43,7 +49,7 @@ window.addEventListener('load', function() {
 
     animateScroll(0);
   }
-
+  //easing for the back to top button 
   function easeInOut(currentTime, start, change, duration) {
     currentTime /= duration / 2;
     if (currentTime < 1) {
@@ -53,46 +59,13 @@ window.addEventListener('load', function() {
     return -change / 2 * (currentTime * (currentTime - 2) - 1) + start;
   }
 
-
-  var add_collection = document.querySelectorAll('.add_collection'),
-      body = document.querySelector('body'),
-      photo_liked = [];
+  //create tableau of picture already in the gallery 
   for(var i=0; i<add_collection.length; i++){
     if(add_collection[i].dataset.like == 'true'){
       photo_liked[photo_liked.length] = add_collection[i].dataset.id;
     }
   };
-
-  var load = 1,
-      charged = false;
-
-
-  window.addEventListener('scroll', function(){
-    if(document.body.classList.contains('accueil')){
-      if(accueil.scrollTop== getScrollTopMax()){
-        load += 1;
-        charged = true;
-        if(charged){
-          !charged;
-          var httpRequest = new XMLHttpRequest;
-          httpRequest.onreadystatechange = function(){
-            if (httpRequest.readyState === 4) {// request is done
-              if (httpRequest.status === 200) {// successfully
-                add_img_load(httpRequest.responseText);     
-              }
-            }
-          };
-
-          httpRequest.open('POST', 'includes/upload_more_picture.php', true);
-          httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-          httpRequest.send('load=' + load );
-        }
-      }
-
-    }
-
-  });
-
+  //function in order to test if we reach the max
   getScrollTopMax = function () {
     var ref;
     return (ref = document.scrollingElement.scrollTopMax) != null
@@ -100,19 +73,50 @@ window.addEventListener('load', function() {
     : (document.scrollingElement.scrollHeight - document.documentElement.clientHeight);
   };
 
+  //infinite scroll ->upload images
+  window.addEventListener('scroll', function(){
+    //only on the accueil pages
+    if(document.body.classList.contains('accueil')){
+      //test if we reach the end of the page
+      if(accueil.scrollTop== getScrollTopMax()){
+        load += 1;
+        charged = true;
+        if(charged){
+          !charged;
+          //http request -> get the url and information of picutre in php
+          var httpRequest = new XMLHttpRequest;
+          httpRequest.onreadystatechange = function(){
+            if (httpRequest.readyState === 4) {// request is done
+              if (httpRequest.status === 200) {// successfully
+                //function add_img_load with parameter = response of the script php
+                add_img_load(httpRequest.responseText);     
+              }
+            }
+          };
+          //link to the script php
+          httpRequest.open('POST', 'includes/upload_more_picture.php', true);
+          httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+          //we send the number of load
+          httpRequest.send('load=' + load );
+        }
+      }
 
+    }
+
+  });
+  //add event wich toggle true false to the data like -> fill the photo like table
   for(var i=0; i<add_collection.length; i++){
     add_collection[i].addEventListener('click', function (){
       if(this.dataset.like == 'false'){
         photo_liked[photo_liked.length] = this.dataset.id;
-        this.dataset.like = 'true';  
-        this.dataset.test = 'true';  
+        this.dataset.like = 'true';   
       }
       else {
         var j =0;
         this.dataset.like = 'false';
         while( j < photo_liked.length ){
           if(photo_liked[j]== this.dataset.id){
+            //avoid to have 2 time the same photo in the table 
             photo_liked.splice(j,1);
             j = photo_liked.length+1;
           }
@@ -123,7 +127,8 @@ window.addEventListener('load', function() {
       }
     }); 
   }
-
+  //add picture to user galery when the pages is close (avoid reloading each time the page close)
+  //prepare http request to the page
   window.addEventListener('beforeunload', function(){
     var httpRequest = new XMLHttpRequest;
     httpRequest.onreadystatechange = function(){
@@ -136,6 +141,7 @@ window.addEventListener('load', function() {
 
     httpRequest.open('POST', './includes/add_user_galery.php', true);
     httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    //from table to string de phot_liked
     var data = create_data_string(photo_liked);
     httpRequest.send(data);
   });
@@ -143,7 +149,7 @@ window.addEventListener('load', function() {
 
   function callback(data){  
   }
-
+  //from array to string 
   function create_data_string(tab){
     var data_string = '';
     for( var k=0; k <tab.length; k++){
@@ -154,11 +160,13 @@ window.addEventListener('load', function() {
     }
     return data_string ;
   }
-
+  //load the image infinte scroll php
   function add_img_load(data){
+    //parse the string get in php to json
     var img_add =  JSON.parse(data),
         gallery_display = document.querySelector('.gallery_display');
     for( var i=0; i<img_add.length; i++ ){
+      //create each html element for each picture and  fill in with the jason table 
       var img_container_create = document.createElement('div');
       img_container_create.classList.add('img_container');
       //create img_action 
@@ -242,6 +250,7 @@ window.addEventListener('load', function() {
       add_button.dataset.like =img_add[i].like ;
       modal_infos.appendChild(add_button);
 
+      //test the action to execute (delete or add) 
       if(img_add[i].session == 'true'){
         if(img_add[i].like == 'false'){
           add_button.innerHTML = '+ ADD TO YOUR COLLECTION';
@@ -270,7 +279,10 @@ window.addEventListener('load', function() {
       img_twitter.src = 'assets/img/twitter.png';
       a_twitter.appendChild(img_twitter);
 
+      
       modal_close.addEventListener('click', function(){
+        var add_popup =document.querySelector('.add_popup');
+        add_popup.style.display = 'none';
         this.parentNode.style.display = 'none';
       });
 
@@ -318,15 +330,18 @@ window.addEventListener('load', function() {
       cible.style.display = 'block';
     });
   }
-/*
+
   var modal_close =document.querySelectorAll('.modal_close');
   for(var j=0; j<modal_close.length;j++){
+    console.log('modal close');
     modal_close[j].addEventListener('click', function(){
       var add_popup =document.querySelector('.add_popup');
-      add_popup.style.display = 'none';
+      if(add_popup== 0){
+        add_popup.style.display = 'none';
+      }
       this.parentNode.style.display = 'none';
     });
-  }*/
+  }
 
   var drop_btn = document.querySelector('.dropdown'),
       dropdown_menu = document.querySelector('.dropdown_menu');
