@@ -19,7 +19,14 @@ Create a website using APIs.
 * Create the database (create_database.php)
 * Go on localhost
 
-## Built With
+## Features
+
+* View the pictures
+* Create an account
+* Save & Delete in favorites
+* Tweet picture
+
+### Built With
 
 * HTML
 * CSS
@@ -30,9 +37,9 @@ Create a website using APIs.
 * Stylus
 * Github
 
-## API
+### API
 
-[Mars Rover Photo](https://api.nasa.gov/api.html#MarsPhotos) 
+[Mars Rover Photo](https://api.nasa.gov/api.html#MarsPhotos)
 
 ### Authors
 
